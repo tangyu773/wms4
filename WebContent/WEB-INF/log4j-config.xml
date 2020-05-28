@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- STRUTSCX LOG4J CONFIGURATION - XML style -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- 标准控制台输出日志 -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="DEBUG" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p]: %d{yyyy-MM-dd HH:mm:ss} %n     |_[MESSAGE]: %m %n     |_[SOURCE] : %l%n%n" />
+		</layout>
+	</appender>
+
+	<!-- 按天写入日志文件 -->
+	<appender name="mobileclient.day.log" class="org.apache.log4j.DailyRollingFileAppender">
+
+		<param name="Threshold" value="DEBUG" />
+		<param name="File" value="${SxAdmin.root}/WEB-INF/logs/tlkf.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="Append" value="true" />
+		<param name="Encoding" value="GBK" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p]: %d{yyyy-MM-dd HH:mm:ss} %n     |_[MESSAGE]: %m %n     |_[SOURCE] : %l%n%n" />
+		</layout>
+	</appender>
+	<!-- 按大小写入日志文件 -->
+	<appender name="mobileclient.roll.log" class="org.apache.log4j.RollingFileAppender">
+            <param name="Threshold" value="DEBUG" />
+            <param name="File" value="${SxAdmin.root}/WEB-INF/logs/tlkf.log" />
+            <param name="Append" value="true" />
+            <param name="MaxBackupIndex" value="10" />
+            <param name="MaxFileSize" value="200MB" />
+            <layout class="org.apache.log4j.PatternLayout">
+                    <param name="ConversionPattern" value="[%p]: %d{yyyy-MM-dd HH:mm:ss} %n     |_[MESSAGE]: %m %n     |_[SOURCE] : %l%n%n" />
+            </layout>
+    </appender>
+
+
+	<appender name="mobileclient.error.log" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="ERROR" />
+		<param name="File" value="${SxAdmin.root}/WEB-INF/logs/tlkf_err.log" />
+		<param name="Append" value="false" />
+		<param name="MaxBackupIndex" value="5" />
+		<param name="MaxFileSize" value="20MB" />
+		<param name="Encoding" value="GBK" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p]: %d{yyyy-MM-dd HH:mm:ss} %n     |_[MESSAGE]: %m %n     |_[SOURCE] : %l%n%n" />
+		</layout>
+	</appender>
+
+
+	<!-- 设置spring框架日志等级 ，输出错误日志到控制台 -->
+	<logger name="org.springframework" additivity="false">
+		<level value="info" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="mobileclient.roll.log" />
+	</logger>
+
+	<!-- 设置连接池日志输出等级 -->
+	<logger name="com.mchange" additivity="false">
+		<level value="ERROR" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="mobileclient.roll.log" />
+	</logger>
+
+	<!-- 设置HTTPClient日志输出等级 -->
+	<logger name="org.apache" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="mobileclient.roll.log" />
+	</logger>
+
+	<!-- 定义不同的包输入到不同的文件中 -->
+	<!--  
+	<logger name="com.just">
+		<level value="DEBUG" />
+		<appender-ref ref="mobileclient.day.log" />
+	</logger>
+
+	<logger name="com.just.">
+		<level value="ERROR" />
+		<appender-ref ref="mobileclient.file.log" />
+	</logger>
+	-->
+
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="mobileclient.roll.log" />
+		<appender-ref ref="mobileclient.error.log" />
+	</root>
+</log4j:configuration>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE CUSTOM>
+<configs>
+	<param name="200" value="操作成功"/>
+	
+	<param name="303" value="请求数据格式无效"/>
+	<param name="309" value="暂未查到符合条件的数据"/>
+	<param name="310" value="请求命令无效"/>	
+	
+	<param name="403" value="请求被限制访问"/>
+	<param name="404" value="系统未配置对象"/>
+	
+	<param name="500" value="系统内部错误"/>
+	<param name="500" value="系统内部错误"/>
+</configs>

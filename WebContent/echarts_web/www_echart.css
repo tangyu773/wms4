@@ -1,0 +1,23 @@
+#container{
+	background-color:rgb(17, 38, 95);
+}
+#topdiv{
+	display: flex;
+	height:40%;
+}
+#topdiv1{
+	height:100%;
+	width: 30%;
+}
+#topdiv2{
+	height:100%;
+	width: 35%;
+}
+#topdiv3{
+	height:100%;
+	width: 35%;
+}
+#dowmdiv{
+	height:60%;
+	width: 100%;
+}

@@ -1,0 +1,186 @@
+/* CSS reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td
+	{
+	margin: 0;
+	padding: 0;
+}
+
+html,body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+/* General Demo Style */
+body {
+	font-family: Cambria, Palatino, "Palatino Linotype", "Palatino LT STD",
+		Georgia, serif;
+	background: #fff url(../images/login/login_bg1.png) repeat top left;
+	font-weight: 400;
+	font-size: 15px;
+	color: #1d3c41;
+	overflow-y: scroll;
+}
+
+#login {
+	background-image: url("../images/login/login_box.png");
+	height: 498px;
+	width: 360px;
+	margin: -240px 0 0 -180px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 0;
+}
+
+fieldset {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.titleimg {
+	background-image: url("../images/login/logo.png");
+	width: 134px;
+	height: 134px;
+	margin: 25px auto;
+}
+/*--------------------*/
+#inputs input {
+	padding: 12px 10px 12px 40px;
+	margin: 0 0 10px 0;
+	width: 264px;
+	font-size: 13px; margin-top : 20px;
+	margin-left: 24px;
+	border: 1px solid #ccc;
+	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
+	border-radius: 17px;
+	margin-top: 20px;
+}
+
+#account {
+	background: #fff url(../images/login/user_n.png) no-repeat;
+	background-position: 8px 7px !important;
+}
+
+#password {
+	background: #fff url(../images/login/password_n.png) no-repeat;
+	background-position: 8px 7px !important;
+}
+
+#account:focus {
+	background: #fff url(../images/login/user_p.png) no-repeat;
+	background-position: 8px 7px !important;
+}
+
+#password:focus {
+	background: #fff url(../images/login/password_p.png) no-repeat;
+	background-position: 8px 7px !important;
+}
+
+#inputs input:focus {
+	border-color: #e8c291;
+	outline: none;
+	-moz-box-shadow: 0 0 0 1px #e8c291 inset;
+	-webkit-box-shadow: 0 0 0 1px #e8c291 inset;
+	box-shadow: 0 0 0 1px #e8c291 inset;
+}
+
+/*--------------------*/
+#actions {
+	margin: 25px 0 0 0;
+}
+
+#submit {
+	background-color: rgba(0, 185, 57, 1.0);
+	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
+	border-radius: 17px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #d69e31 #e3a037 #d5982d #e3a037;
+	float: left;
+	height: 39px;
+	padding: 0;
+	width: 314px;
+	margin: 40px 24px; cursor : pointer;
+	font: bold 15px Arial, Helvetica;
+	color: #fff;
+	cursor: pointer;
+}
+
+#submit:hover,#submit:focus {
+	background-color: rgba(13, 227, 79, 1.0);
+}
+
+#submit:active {
+	outline: none;
+}
+
+#submit::-moz-focus-inner {
+	border: none;
+}
+
+#actions a {
+	color: #3151A2;
+	float: right;
+	line-height: 35px;
+	margin-left: 10px;
+}
+
+/*--------------------*/
+#back {
+	display: block;
+	text-align: center;
+	position: relative;
+	top: 60px;
+	color: #999;
+}
+
+form .errorspanimg1 {
+	display :none;
+  position: absolute;
+  top: 220px;
+  left: 340px;
+  border-top: 5px solid transparent;
+  border-right: 10px solid red;
+  border-bottom: 5px solid transparent;
+}
+
+form .errorspan1 {
+		display :none;
+	width:100px;
+	height: 60px;
+	line-height: 30px;
+	background-color: red;
+	color: #fff;
+	text-align: left;
+	padding-left: 20px;
+	position: absolute;
+	top: 215px;
+	left: 350px;
+}
+form .errorspanimg2 {
+		display :none;
+  position: absolute;
+  top: 290px;
+  left: 340px;
+  border-top: 5px solid transparent;
+  border-right: 10px solid red;
+  border-bottom: 5px solid transparent;
+}
+
+form .errorspan2 {
+		display :none;
+	width:100px;
+	height: 60px;
+	line-height: 30px;
+	background-color: red;
+	color: #fff;
+	text-align: left;
+	padding-left: 20px;
+	position: absolute;
+	top: 285px;
+	left: 350px;
+}

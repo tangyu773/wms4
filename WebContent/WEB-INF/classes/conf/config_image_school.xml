@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE root>
+<configs>
+
+	<!-- 富文本域插件 管理 -->
+	
+	<!-- 图片类型 image/png -->
+	<param name="image_type" value=".png"/>
+	<!-- 图片大小 单位:KB -->
+	<param name="image_maxSize" value="1024"/> 
+	<!-- 新文件保存文件夹 -->
+	<param name="image_saveDir" value="shixi/images/school/"/>
+	<!-- 图片保存本地根目录-->
+	<param name="image_baseDir" value="D:/javaeeEclipse/webproject/SxAdmin/WebContent/"/>
+	<!-- 图片保存URL地址 -->
+	<param name="image_ipUrl" value="http://127.0.0.1:8080/SxAdmin/"/>
+	<!-- 校徽最大宽 300 -->
+	<param name="image_maxWidth" value="300"/>
+	<!-- 校徽最大高度 200-->
+	<param name="image_maxHeight" value="300"/>
+	
+	<!-- 错误说明 -->
+	<param name="1001" 	value="上传图片类型有误"/>
+	<param name="1002" 	value="图片大小不能超过%sKB"/>
+	<param name="1003" 	value="图片上传失败"/>
+	<param name="1004" 	value="上传附件类型有误"/>
+	<param name="1005" 	value="附件大小不能超过%sKB"/>
+	<param name="1006" 	value="附件上传失败"/>
+	<param name="1007" 	value="缩略图片尺寸不能大于%s*%s"/>
+	<param name="1008" 	value="详情图片尺寸不能大于%s*%s"/>
+
+</configs>

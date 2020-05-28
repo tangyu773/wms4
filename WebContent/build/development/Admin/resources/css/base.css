@@ -1,0 +1,73 @@
+/**靠左加粗**/
+.grid_row_content_bold_left{
+	float:left;
+	color:#04408c;
+    font-weight: bold;
+}
+/**靠左**/
+.grid_row_content_left{
+    float:left;
+}
+
+.toolbar_button_cls{
+	padding: 3px;
+	color: blue;
+}
+
+/**操作按钮**/
+.opear-button{
+	margin: 0px 0px 0px 10px;
+}
+
+.addIcon {
+    background-image: url(../icons/add.png) !important;
+}
+
+/**状态颜色样式**/
+.color_status_default {
+    color: Black; font-weight: bold;
+}
+
+.color_status_0 {
+	color: red; font-weight: bold;
+}
+
+.color_status_1 {
+	color: green; font-weight: bold;
+}
+
+.color_status_2 {
+	color: brown; font-weight: bold;
+}
+
+.color_status_3 {
+	color: DimGray; font-weight: bold;
+}
+
+.color_status_4 {
+	color: DarkOliveGreen; font-weight: bold;
+}
+
+.color_status_5 {
+	color: Darkorange; font-weight: bold;
+}
+
+.color_status_6 {
+	color: DarkOrchid; font-weight: bold;
+}
+
+.color_status_7 {
+	color: DarkRed; font-weight: bold;
+}
+
+.color_status_8 {
+	color: DarkSalmon; font-weight: bold;
+}
+
+.color_status_9 {
+	color: DarkSeaGreen; font-weight: bold;
+}
+
+.color_status_10 {
+	color: DarkSlateBlue; font-weight: bold;
+}
