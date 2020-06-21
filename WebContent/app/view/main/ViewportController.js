@@ -217,8 +217,8 @@ Ext.define('Admin.view.main.ViewportController', {
             var me = this,
             refs = me.getReferences();
 
-            var node = listStore.findNode('PARAM', menuid),
-                view = node ? node.get('COMPOMENT') : null,
+            var node = listStore.findNode('param', menuid),
+                view = node ? node.get('compoment') : null,
                 mainCard = refs.mainCardPanel,
                 mainLayout = mainCard.getLayout(),
                 viewModel = me.getViewModel(),

@@ -42,7 +42,8 @@ public class ModuleController extends ControllerSupport {
 		Map<String, Object> ur = getTargetFromSessionByCode(
 				SessionCode.LOGIN_USER_ROLE, HashMap.class);
 		int roleid = ((BigDecimal) ur.get("roleid")).intValue();
-		return sysRoleRightService.getModuleList(roleid, node);
+		List<Map<String, Object>> req = sysRoleRightService.getModuleList(roleid, node);
+		return req;
 	}
 	/**
 	 * 生成模块树

@@ -2,8 +2,10 @@ package com.just.practice.service.sys.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,7 @@ public class SysRoleRightServiceImpl extends BaseObject implements
 		
 		//return moduleList(roleid, pid);
 		ms = sysRoleRightDao.searchmapModule(roleid);
+		ms=transformUpperCase(ms);
 		return getTree(0);
 	}
 	
@@ -98,5 +101,31 @@ public class SysRoleRightServiceImpl extends BaseObject implements
 			}
 		}
 		return mm;
+	}
+	public static List<Map<String, Object>> transformUpperCase(List<Map<String, Object>> list) {
+        for (int i = 0;i < list.size(); i++){
+            Map<String, Object> resultMap = new HashMap<>();
+            Map<String, Object> map = list.get(i);
+ 
+            if (map == null || map.isEmpty()) {
+ 
+                return list;
+            }
+            Set<String> keySet = map.keySet();
+            for (String key : keySet) {
+            	String newKey=key;
+            	if(!key.equalsIgnoreCase("iconCls")){
+            		 newKey = key.toLowerCase();
+            	}
+            	else{
+            		newKey="iconCls";
+            	}
+                
+                //newKey = newKey.replace("_", "");
+                resultMap.put(newKey, map.get(key));
+            }
+            list.set(i,resultMap);
+        }
+        return list;
 	}
 }
