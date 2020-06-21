@@ -79,7 +79,7 @@ Ext.define('Admin.view.main.ViewportController', {
                     var loginInfo = jsonObj.rows;
                     var ulists =Ext.ComponentQuery.query("tbtext[name='main_Viewport_tbtextjs']");
                     var ulist = ulists[ulists.length-1];
-                    ulist.setText(loginInfo.roledes +' : '+loginInfo.staffname)  ;
+                    ulist.setText(loginInfo.ROLEDES +' : '+loginInfo.STAFFNAME)  ;
                     just.data.user.loginInfo  = loginInfo;
                 }else{
                     me.initUserInfo(cmp,eOpts);
@@ -217,13 +217,13 @@ Ext.define('Admin.view.main.ViewportController', {
             var me = this,
             refs = me.getReferences();
 
-            var node = listStore.findNode('param', menuid),
-                view = node ? node.get('compoment') : null,
+            var node = listStore.findNode('PARAM', menuid),
+                view = node ? node.get('COMPOMENT') : null,
                 mainCard = refs.mainCardPanel,
                 mainLayout = mainCard.getLayout(),
                 viewModel = me.getViewModel(),
                 vmData = viewModel.getData(),
-                existingItem = mainCard.child('component[menuid=' + menuid + ']'),
+                existingItem = mainCard.child('compoment[menuid=' + menuid + ']'),
                 lastView = vmData.currentView,
                 newView;
                 

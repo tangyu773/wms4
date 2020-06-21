@@ -6,7 +6,7 @@
 	<display-name>PtAdmin</display-name>
 	<context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>PtAdmin.root</param-value>
+		<param-value>wms4.root</param-value>
 	</context-param>
 
 	<!-- 键值对初始化参数 -->
