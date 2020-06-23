@@ -15,6 +15,8 @@ public interface SysUserService {
 			throws Exception;
 	public List<Map<String, Object>> findusrForTree() 
 			throws Exception ;
+	public Map<String, Object> getkur() 
+			throws Exception ;
 	public boolean droptreepanel(String id,String pid) throws Exception;
 	public abstract  boolean  updatepwd(String account ,String pwd) throws Exception ;
 }

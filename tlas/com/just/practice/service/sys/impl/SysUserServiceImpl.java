@@ -83,5 +83,10 @@ public class SysUserServiceImpl extends BaseObject implements SysUserService {
 	public boolean droptreepanel(String id,String pid) throws Exception{	
 		return sysUserDao.droptreepanel(id,pid);
 	}
+	@Override
+	public Map<String, Object> getkur() throws Exception {
+		// TODO Auto-generated method stub
+		return sysUserDao.getkur();
+	}
 
 }

@@ -4,6 +4,7 @@
 #topdiv{
 	display: flex;
 	height:40%;
+	padding-top:10px;
 }
 #topdiv1{
 	height:100%;

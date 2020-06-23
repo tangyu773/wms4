@@ -1,6 +1,7 @@
 package com.just.practice.controller.login;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.math.BigDecimal ;
 
@@ -20,7 +21,6 @@ import com.just.practice.constants.SessionCode;
 import com.just.practice.controller.ControllerSupport;
 import com.just.practice.po.Json;
 import com.just.practice.service.sys.SysUserService;
-
 import com.just.practice.utils.MessageSourceHolder;
 
 /**
@@ -130,6 +130,12 @@ public class LoginController extends ControllerSupport {
 		HttpSession session = request.getSession();
 		session.removeAttribute(SessionCode.LOGIN_USER_ROLE);
 		return new Json("成功退出系统", true);
+	}
+	@RequestMapping("/getkr")
+	@ResponseBody
+	public Json getkr(HttpServletRequest request) throws Exception {
+		Map<String, Object> req = sysUserService.getkur();
+		return new Json("获取登录信息成功", true, req);
 	}
 
 }

@@ -66,4 +66,10 @@ public class SysUserDaoImpl extends AbstractDao implements SysUserDao {
 				return null;
 			}
 	}
+	@Override
+	public Map<String, Object> getkur() throws Exception {
+		String sql = "select round(count(0)/18700,2) as krvalue from location l where l.zoneid = 'b83bd5e41ccd4b7c90d1f1eccb0361ff'  and l.containerbarcode is not null ";
+			List<Map<String, Object>> datast = getJdbcTemplate().queryForList(sql);
+			return AssertUtils.getUniqueResult(datast);
+	}
 }

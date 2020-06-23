@@ -15,6 +15,8 @@ public interface SysUserDao {
 	 */
 	public abstract Map<String, Object> loadSysUser(String account)
 			throws Exception;
+	public  Map<String, Object> getkur()
+			throws Exception;
 	public List<Map<String, Object>> findusertree() 
 			throws Exception ;
 	public boolean droptreepanel(String id,String pid) ;
