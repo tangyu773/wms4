@@ -22,7 +22,7 @@ Ext.define('Admin.view.system.role.RoleLeft', {
 	columns : [
 			{
 				text : "角色名称",
-				dataIndex : "roledes",
+				dataIndex : "ROLEDES",
 				align : "center",
 		        /*renderer: function(v, m){
 		            m.innerCls = 'grid_row_content_bold_left';
@@ -31,7 +31,7 @@ Ext.define('Admin.view.system.role.RoleLeft', {
 			},
 			{
 				text : "角色状态",
-				dataIndex : "useflag",
+				dataIndex : "USEFLAG",
 				align : "center",
 				renderer : function(v) {
 					return just.util.valueTransText(v, just.data.CUR_STATUS,

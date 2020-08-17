@@ -1,8 +1,11 @@
 package com.just.practice.service.sys.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,7 @@ public class SysModuleServiceImpl extends BaseObject implements
 	@Override
 	public List<Map<String, Object>> findallmenu(int roleid) throws Exception {		
 		ms = sysModuleDao.findallModule(roleid);
+		ms=transformUpperCase(ms);
 		return getTreebymap(0);
 	}
 	@Override
@@ -79,7 +83,10 @@ public class SysModuleServiceImpl extends BaseObject implements
 	private List<Map<String, Object>> getTreebymap(int pid) throws Exception {
 		List<Map<String, Object>> mt = findmenuBymap(pid);
 		for(Map<String, Object> m: mt) {
-			int p = (Integer)m.get("id");
+			
+	
+			int p= ((BigDecimal) m.get("id")).intValue();
+		
 			if(isNotLeafbymap(p)) {
 				m.put("expanded", true);
 				m.put("leaf", false);
@@ -119,8 +126,11 @@ public class SysModuleServiceImpl extends BaseObject implements
 	private List<Map<String, Object>> getTree(int pid)
 			throws Exception {
 		List<Map<String, Object>> ms = sysModuleDao.findSysModule(pid);
+		ms=transformUpperCase(ms);
+		
 		for (Map<String, Object> m : ms) {
-			pid = (Integer) m.get("id");
+			
+			pid = ((BigDecimal) m.get("id")).intValue();
 			List<Map<String, Object>> children = getTree(pid);
 			if(children == null || children.size()>0){
 				m.put("expanded", true);
@@ -131,5 +141,31 @@ public class SysModuleServiceImpl extends BaseObject implements
 			}
 		}
 		return ms;
+	}
+	public static List<Map<String, Object>> transformUpperCase(List<Map<String, Object>> list) {
+        for (int i = 0;i < list.size(); i++){
+            Map<String, Object> resultMap = new HashMap<>();
+            Map<String, Object> map = list.get(i);
+ 
+            if (map == null || map.isEmpty()) {
+ 
+                return list;
+            }
+            Set<String> keySet = map.keySet();
+            for (String key : keySet) {
+            	String newKey=key;
+            	if(!key.equalsIgnoreCase("iconCls")){
+            		 newKey = key.toLowerCase();
+            	}
+            	else{
+            		newKey="iconCls";
+            	}
+                
+                //newKey = newKey.replace("_", "");
+                resultMap.put(newKey, map.get(key));
+            }
+            list.set(i,resultMap);
+        }
+        return list;
 	}
 }

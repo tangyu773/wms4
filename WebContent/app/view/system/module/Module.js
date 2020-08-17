@@ -10,7 +10,8 @@ Ext.define('Admin.view.system.module.Module', {
 	    'Admin.view.system.module.ModuleList',
 	    'Admin.view.system.module.ModuleViewModel',
 	    'Admin.view.system.module.ModuleController',
-	    'Admin.store.system.module.ModuleTree'
+	    'Admin.store.system.module.ModuleTree',
+	    'Admin.view.system.module.ModuleAdd'
     ],
 	controller : 'system_module_Module',
 	viewModel : {

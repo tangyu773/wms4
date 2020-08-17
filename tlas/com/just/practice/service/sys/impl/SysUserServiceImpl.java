@@ -88,5 +88,23 @@ public class SysUserServiceImpl extends BaseObject implements SysUserService {
 		// TODO Auto-generated method stub
 		return sysUserDao.getkur();
 	}
+	@Override
+	public List<Map<String, Object>> sys_role_query() throws Exception {
+		// TODO Auto-generated method stub
+		return sysUserDao.sys_role_query();
+	
+	}
+	@Override
+	public List<Map<String, Object>> getMtype() throws Exception {
+		return sysUserDao.getMtype();
+	}
+	@Override
+	public List<Map<String, Object>> getSCgroup() throws Exception {
+		return sysUserDao.getSCgroup();
+	}
+	@Override
+	public List<Map<String, Object>> getqushi() throws Exception {
+		return sysUserDao.getqushi();
+	}
 
 }

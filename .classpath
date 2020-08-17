@@ -15,6 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="src" path="tlas"/>
-	<classpathentry kind="lib" path="D:/developer/tomcat/apache-tomcat-7.0.56/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="E:/Program Files/apache-tomcat-7.0.56/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>

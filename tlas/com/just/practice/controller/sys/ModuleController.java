@@ -57,7 +57,8 @@ public class ModuleController extends ControllerSupport {
 		if(!StringUtils.isEmpty(pid)){
 			iPid = Integer.parseInt(pid);
 		}
-		return sysModuleService.findSysModuleForTree(iPid);
+		List<Map<String, Object>> a = sysModuleService.findSysModuleForTree(iPid);
+		return a;
 	}
 	@RequestMapping("/rootview")
 	@ResponseBody

@@ -17,7 +17,7 @@ Ext.define('Admin.store.system.role.Role', {
             TEACHERLIST: just.getUrl('/sys/role/sys_role_teacher_list_l.action')
         },
         type: 'ajax',
-        url: just.getUrl('/sys/user/sys_role_query_r.action'),
+        url: just.getUrl('/sys/user/sys_role_query.action'),
         actionMethods: {
             create: "POST", read: "POST", update: "POST", destroy: "POST"
         },

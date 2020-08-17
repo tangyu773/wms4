@@ -3,7 +3,14 @@ package com.just.practice.controller.login;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.math.BigDecimal ;
+import java.net.Socket;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -83,6 +90,25 @@ public class LoginController extends ControllerSupport {
 		commSession.put(SpExtParams.IDCARD, String.valueOf(user.get("idcard")));
 		setTargetFromSession(Constants.WEB_APP_COMMON_SESSION, commSession);
 		//user.remove("password");
+		 try {
+			  Socket s= new Socket("10.10.30.202",8008);
+			  
+			  OutputStream os= s.getOutputStream();
+			  OutputStreamWriter osw=new OutputStreamWriter(os);
+			  PrintWriter pw= new PrintWriter(osw,true);					  				      
+			  pw.write("STXL;A2702001075ETX");
+			  InputStream is = s.getInputStream();
+			  InputStreamReader isw	= new InputStreamReader (is);
+			  BufferedReader br= new BufferedReader(isw);
+			  System.out.println("socket open");  
+			  String mess= "";
+			  while((mess = br.readLine()) != null)
+			      System.out.println(mess);  
+	
+		  }catch( Exception e ){
+			  System.out.println(e.toString()); 
+		  }
+
 		return new Json("登录成功!",true);
 	}
 	@RequestMapping("/validatepwd")
@@ -135,7 +161,25 @@ public class LoginController extends ControllerSupport {
 	@ResponseBody
 	public Json getkr(HttpServletRequest request) throws Exception {
 		Map<String, Object> req = sysUserService.getkur();
-		return new Json("获取登录信息成功", true, req);
+		return new Json("获取库容成功", true, req);
+	}
+	@RequestMapping("/getMtype")
+	@ResponseBody
+	public Json getMtype(HttpServletRequest request) throws Exception {
+		List<Map<String, Object>> req = sysUserService.getMtype();
+		return new Json("获取物料类型信息成功", true, req);
+	}
+	@RequestMapping("/getSCgroup")
+	@ResponseBody
+	public Json getSCgroup(HttpServletRequest request) throws Exception {
+		List<Map<String, Object>> req = sysUserService.getSCgroup();
+		return new Json("获取区域信息成功", true, req);
+	}
+	@RequestMapping("/getqushi")
+	@ResponseBody
+	public Json getqushi(HttpServletRequest request) throws Exception {
+		List<Map<String, Object>> req = sysUserService.getqushi();
+		return new Json("获取区域信息成功", true, req);
 	}
 
 }

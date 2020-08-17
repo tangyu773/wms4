@@ -211,7 +211,7 @@ Ext.define('Admin.view.system.role.RoleController',{
      * 点击角色
      */
     _onRoleItemClick : function(v, record, item, index, e, eOpts){
-        this.roleId = record.data.roleid;
+        this.roleId = record.data.ROLEID;
         this.role_type = record.data.role_type;
         this._moduleListGrid.getStore().load({params:{roleid:this.roleId, role_type:this.role_type}});
     },

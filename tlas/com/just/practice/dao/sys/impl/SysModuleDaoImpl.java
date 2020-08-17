@@ -26,11 +26,11 @@ public class SysModuleDaoImpl extends AbstractDao implements SysModuleDao {
 		String sql = null;
 		if (StringUtils.isBlank(param)) {
 			sql = "select m.menuid, m.pid, m.text, m.icon_cls, m.moduleurl, m.param, m.compoment, m.status, m.msort, m.menu_type "
-				+ "from sys_menu m WHERE m.menu_type = 0 AND m.moduleurl = ?";
+				+ "from AS10_SYS_MENU m WHERE m.menu_type = 0 AND m.moduleurl = ?";
 			return getJdbcTemplate().queryForMap(sql, path);
 		}else{
 			sql = "select m.menuid, m.pid, m.text, m.icon_cls, m.moduleurl, m.param, m.compoment, m.status, m.msort, m.menu_type "
-					+ "from sys_menu m WHERE m.menu_type = 0 AND m.moduleurl = ? and m.param = ? ";
+					+ "from AS10_SYS_MENU m WHERE m.menu_type = 0 AND m.moduleurl = ? and m.param = ? ";
 			return getJdbcTemplate().queryForMap(sql, path, param);
 		}
 	}
@@ -47,21 +47,21 @@ public class SysModuleDaoImpl extends AbstractDao implements SysModuleDao {
 	public List<Map<String, Object>> findSysModule(int pid)
 			throws Exception {
 
-		String sql = "SELECT m.param,m.menuid as id,m.pid,m.text,m.compoment,m.moduleurl,m.status,m.msort,m.icon_cls as iconCls  FROM sys_menu AS m where m.pid=? order by m.msort asc";
+		String sql = "SELECT m.param,m.menuid as id,m.pid,m.text,m.compoment,m.moduleurl,m.status,m.msort,m.icon_cls as iconCls  FROM AS10_SYS_MENU  m where m.pid=? order by m.msort asc";
 		return getJdbcTemplate().queryForList(sql, pid);
 	}
 	@Override
 	public List<Map<String, Object>> findallModule(int roleid)
 			throws Exception {
 
-		String sql = "select t.rightadd AS c,t.rightaudit AS a, t.rightedit AS u, t.rightdel AS d,t.rigthshow as r,m.menuid as id,m.icon_cls as iconCls,m.*,t.* from sys_menu m LEFT JOIN (select * from wx10_sys_rolemodule rm where rm.roleid =?) t on t.moduleid = m.menuid";
+		String sql = "select t.rightadd AS c,t.rightaudit AS a, t.rightedit AS u, t.rightdel AS d,t.rigthshow as r,m.menuid as id,m.icon_cls as iconCls,m.*,t.* from AS10_SYS_MENU m LEFT JOIN (select * from AS10_SYS_ROLEMODULE rm where rm.roleid =?) t on t.moduleid = m.menuid";
 		return getJdbcTemplate().queryForList(sql, roleid);
 	}
 	@Override
 	public List<Map<String, Object>> findRolelModule(int roleid)
 			throws Exception {
 
-		String sql = "select m.menuid as id,m.icon_cls as iconCls,rm.rightadd AS c,rm.rightaudit AS a, rm.rightedit AS u, rm.rightdel AS d,rm.rigthshow as r,m.*,rm.* from wx10_sys_rolemodule rm left join sys_menu m on rm.moduleid = m.menuid where rm.roleid=?";
+		String sql = "select m.menuid as id,m.icon_cls as iconCls,rm.rightadd AS c,rm.rightaudit AS a, rm.rightedit AS u, rm.rightdel AS d,rm.rigthshow as r,m.*,rm.* from AS10_SYS_ROLEMODULE rm left join AS10_SYS_MENU m on rm.moduleid = m.menuid where rm.roleid=?";
 		return getJdbcTemplate().queryForList(sql, roleid);
 	}
 	

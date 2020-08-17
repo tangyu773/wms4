@@ -72,4 +72,32 @@ public class SysUserDaoImpl extends AbstractDao implements SysUserDao {
 			List<Map<String, Object>> datast = getJdbcTemplate().queryForList(sql);
 			return AssertUtils.getUniqueResult(datast);
 	}
+	@Override
+	public List<Map<String, Object>> sys_role_query() throws Exception {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * from AS10_SYS_ROLE";
+		return getJdbcTemplate().queryForList(sql);
+	
+	}
+	@Override
+	public List<Map<String, Object>> getMtype() throws Exception {
+		String sql = "select  NVL(ic.name,'空托盘') as name  ,count(0) as value from location l  inner join item i on l.bomid=i.itemid left join itemcatalog ic on i.materialtype=ic.field1 where l.bomid is not null   group by ic.name";
+		return getJdbcTemplate().queryForList(sql);
+	}
+	@Override
+	public List<Map<String, Object>> getSCgroup() throws Exception {
+		String sql = "select sc,sum(total) as total,sum(usable) as usable,round(sum(usable)/sum(total),2) as userate  from (select e.equipmentnumber as SC,l.locationline, count(1) as total, nvl(t.usable, 0) as usable  from location l left join (select l.locationline, count(1) usable from location l "
+				+"join zone z on l.zoneid=z.zoneid where l.containerid is not null    and l.locationstate = 'LocationState_Stored' and z.name='高架库区'group by l.locationline) t   "
+				+" on l.locationline = t.locationline join zone z on z.zoneid=l.zoneid join equipmentline el on l.locationline=el.line join equipment e on e.equipmentid=el.equipmentid where z.name='高架库区' and l.warehouseid='6343d09d35a641e0a9ad942a255d4707'"
+				 +" group by e.equipmentnumber,l.locationline, t.usable   order by l.locationline) t1 group by sc order by sc";
+		return getJdbcTemplate().queryForList(sql);
+	}
+	@Override
+	public List<Map<String, Object>> getqushi() throws Exception {
+		String sql = "select sc,sum(total) as total,sum(usable) as usable,round(sum(usable)/sum(total),2) as userate  from (select e.equipmentnumber as SC,l.locationline, count(1) as total, nvl(t.usable, 0) as usable  from location l left join (select l.locationline, count(1) usable from location l "
+				+"join zone z on l.zoneid=z.zoneid where l.containerid is not null    and l.locationstate = 'LocationState_Stored' and z.name='高架库区'group by l.locationline) t   "
+				+" on l.locationline = t.locationline join zone z on z.zoneid=l.zoneid join equipmentline el on l.locationline=el.line join equipment e on e.equipmentid=el.equipmentid where z.name='高架库区' and l.warehouseid='6343d09d35a641e0a9ad942a255d4707'"
+				 +" group by e.equipmentnumber,l.locationline, t.usable   order by l.locationline) t1 group by sc order by sc";
+		return getJdbcTemplate().queryForList(sql);
+	}
 }

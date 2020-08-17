@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	<display-name>PtAdmin</display-name>
+	<display-name>wms4</display-name>
 	<context-param>
 		<param-name>webAppRootKey</param-name>
 		<param-value>wms4.root</param-value>

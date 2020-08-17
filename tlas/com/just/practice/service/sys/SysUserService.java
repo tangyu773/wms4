@@ -19,4 +19,12 @@ public interface SysUserService {
 			throws Exception ;
 	public boolean droptreepanel(String id,String pid) throws Exception;
 	public abstract  boolean  updatepwd(String account ,String pwd) throws Exception ;
+	public List<Map<String, Object>> sys_role_query() 
+			throws Exception ;
+	public List<Map<String, Object>> getMtype() 
+			throws Exception ;
+	public List<Map<String, Object>> getSCgroup() 
+			throws Exception ;
+	public List<Map<String, Object>> getqushi() 
+			throws Exception ;
 }

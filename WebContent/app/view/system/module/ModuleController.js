@@ -46,11 +46,12 @@ Ext.define('Admin.view.system.module.ModuleController',{
     /*    var saveButton = addVin.down('button[name=saveButton]');
         saveButton.on('click',this._onAddSave);    */
     },
+ 
     /**
      * 保存添加模块
      */
     _onAddSave : function(cmp, eOpts){
-    	Ext.cmp
+    	
     	console.log(this._listGrid);
     	console.log(this.getView());
     	var listStore = this.getView().getViewModel().getData().ModuleTreeGrid;
@@ -92,39 +93,23 @@ Ext.define('Admin.view.system.module.ModuleController',{
             })
         }
     },
-    onuseraddClick:function(){
-        var width = Math.floor(Ext.Element.getViewportWidth() * 0.4),
-            height = Math.floor(Ext.Element.getViewportHeight() * 0.4);
-        var params= {
-                targetCfg: {
-                    //put any extra configs for your view here
-                },
-                windowCfg: {
-                    // Any configs that you would like to apply for window popup goes here
-                    title: '添加模块',
-                    width:width,
-                    height:height
-                }
-            };
+   
+    _onShowEditWin :function(grid, rowIndex, colIndex,b,h,v){
+        /*var records = this._roleListGrid.getSelectionModel().getSelection();
+        if(records.length != 1){
+            Ext.Msg.alert("系统提示","请选择一条记录！");
+            return;
+        }
+        var record = records[0];*/
+        var editView = Ext.widget('system_module_ModuleAdd');
+        editView.setTitle('修改模块');
+        editView.isedit=1;
+        console.log(editView.isedit);
 
-            this.setCurrentView('system_module_ModuleAdd',params);
-            /*var win = Ext.getCmp('userAdd');
-            var te = win.down('textfield[name=userss]');
-            te.enable();*/
-          
-    },
-    setCurrentView: function(view, params) {
-       var cfg = Ext.apply({
-                xtype: 'window',
-                items: [
-                    Ext.apply({
-                        xtype: view
-                    }, params.targetCfg)
-                ]
-            }, params.windowCfg);
 
-            Ext.create(cfg);
+        editView.down('form').loadRecord(v);
     },
+
     initPermission : function(cmp){
         var me = this;
         var refs = me.getReferences(),

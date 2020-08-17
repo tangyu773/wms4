@@ -74,7 +74,7 @@ Ext.define('Admin.view.system.module.ModuleList', {
 		            iconCls: 'fa fa-pencil-square fa-lg opear-button',
 		            action: 'edit',
 		            tooltip: '修改模块',
-		            handler: '_onShowEditWin'
+		            handler: '_onShowEditWin'//'_onShowEditWin'onusereditClick
 		        }/*, {
 		        	iconCls: 'fa fa-ban fa-lg opear-button',
 		        	action: 'delete',
@@ -105,7 +105,7 @@ Ext.define('Admin.view.system.module.ModuleList', {
                         //cls: 'delete-focus-bg',
                        // iconCls : 'x-fa fa-plus',
                         listeners: {
-                        click: 'onuseraddClick'
+                        click: '_onShowAddWin'
                         }
                     }]
 	}, {

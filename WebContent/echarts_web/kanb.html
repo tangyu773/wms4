@@ -8,32 +8,25 @@
        <div id="container" style="height: 100%">
            <div id="topdiv" >
                 <div id="topdiv1" >
-            
-           
+                     
                 </div>
                 <div id="topdiv2" >
-            
-           
+                      
                 </div>
                 <div id="topdiv3" >
-            
-           
+                       
                 </div>
            
            </div>
            <div id="dowmdiv" >
-            
-           
+                      
            </div>
-
-
-
-           
+          
        </div>
 
        <script type="text/javascript" src="../www/echarts.js"></script>
-	   <script type="text/javascript" src="../www/echarts-liquidfill.min.js"></script>
-	   <script src="../www/jquery-1.10.2.js" type="text/javascript"></script>
+     <script type="text/javascript" src="../www/echarts-liquidfill.min.js"></script>
+     <script src="../www/jquery-1.10.2.js" type="text/javascript"></script>
      <script src="../bootstrap/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
        <script type="text/javascript">
 
@@ -42,407 +35,10 @@ var myChart2 = echarts.init(document.getElementById('topdiv2'));
 var myChart3 = echarts.init(document.getElementById('topdiv3'));
 var myChart4 = echarts.init(document.getElementById('dowmdiv'));
 
- 
 
 
 
-
-
-
- var option1 = {
-     backgroundColor:'#00265f',
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-          }
-        },
-        grid: {
-          left: '2%',
-          right: '4%',
-          bottom: '14%',
-          top:'16%',
-          containLabel: true
-        },
-         legend: {
-        data: ['1', '2', '3'],
-        right: 10,
-        top:12,
-        textStyle: {
-            color: "#fff"
-        },
-        itemWidth: 12,
-        itemHeight: 10,
-        // itemGap: 35
-    },
-        xAxis: {
-          type: 'category',
-          data: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
-          axisLine: {
-            lineStyle: {
-              color: 'white'
-
-            }
-          },
-          axisLabel: {
-            // interval: 0,
-            // rotate: 40,
-            textStyle: {
-              fontFamily: 'Microsoft YaHei'
-            }
-          },
-        },
-
-        yAxis: {
-          type: 'value',
-          //max:'1200',
-          axisLine: {
-            show: false,
-            lineStyle: {
-              color: 'white'
-            }
-          },
-          splitLine: {
-            show: true,
-            lineStyle: {
-              color: 'rgba(255,255,255,0.3)'
-            }
-          },
-          axisLabel: {}
-        },
-       
-        series: [{
-          name: '出库',
-          type: 'bar',
-          barWidth: '15%',
-          itemStyle: {
-            normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#248ff7'
-                }, {
-                    offset: 1,
-                    color: '#6851f1'
-                }]),
-                barBorderRadius: 12,
-            },
-          },
-          data: [400, 400, 2200, 3300, 4000, 3300, 2400, 1400, 300, 400, 400, 300]
-        },
-        {
-          name: '入库',
-          type: 'bar',
-          barWidth: '15%',
-          itemStyle: {
-            normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: '#8bd46e'
-                }, {
-                    offset: 1,
-                    color: '#09bcb7'
-                }]),
-                barBorderRadius: 11,
-            }
-            
-          },
-          data: [400, 500, 500, 500, 500, 400,400, 500, 500,400, 500, 500]
-        }]
-      };
-
-      var app = {
-        currentIndex: -1,
-      };
-      setInterval(function () {
-        var dataLen = option1.series[0].data.length;
-
-        // 取消之前高亮的图形
-        myChart4.dispatchAction({
-          type: 'downplay',
-          seriesIndex: 0,
-          dataIndex: app.currentIndex
-        });
-        app.currentIndex = (app.currentIndex + 1) % dataLen;
-        //console.log(app.currentIndex);
-        // 高亮当前图形
-        myChart4.dispatchAction({
-          type: 'highlight',
-          seriesIndex: 0,
-          dataIndex: app.currentIndex,
-        });
-        // 显示 tooltip
-        myChart4.dispatchAction({
-          type: 'showTip',
-          seriesIndex: 0,
-          dataIndex: app.currentIndex
-        });
-
-
-      }, 3000);
-
-
-
-
-
-
-
-
-
-      var scaleData = [{
-        'name': '出库',
-        'value': 10
-    },
-    {
-        'name': '入库',
-        'value': 50
-    },
-    {
-        'name': '质检',
-        'value': 10
-    }
-    ,
-    {
-        'name': '拣选',
-        'value': 7
-    }
-  
-];
-var rich = {
-    white: {
-        color: '#ddd',
-        align: 'center',
-        padding: [3, 0]
-    }
-};
-var placeHolderStyle = {
-    normal: {
-        label: {
-            show: false
-        },
-        labelLine: {
-            show: false
-        },
-        color: 'rgba(0, 0, 0, 0)',
-        borderColor: 'rgba(0, 0, 0, 0)',
-        borderWidth: 0
-    }
-};
-var data1 = [];
-var color=['#ff5b00','#ffe000','#00ffff','#00cfff','#006ced','#ff3000','#ffa800']
-for (var i = 0; i < scaleData.length; i++) {
-    data1.push({
-        value: scaleData[i].value,
-        name: scaleData[i].name,
-        itemStyle: {
-            normal: {
-                borderWidth: 10,
-                shadowBlur: 10,
-                borderColor:color[i],
-                shadowColor: color[i]
-            }
-        }
-    }, {
-        value: 2,
-        name: '',
-        itemStyle: placeHolderStyle
-    });
-}
-var seriesObj = [{
-    name: '',
-    type: 'pie',
-    //center:['50%','50%'],
-    clockWise: false,
-    radius: [95, 95],
-    hoverAnimation: false,
-    itemStyle: {
-        normal: {
-            label: {
-                show: true,
-                position: 'outside',
-                color: '#ddd',
-                formatter: function(params) {
-                    var percent = 0;
-                    var total = 0;
-                    for (var i = 0; i < scaleData.length; i++) {
-                        total += scaleData[i].value;
-                    }
-                    percent = ((params.value / total) * 100).toFixed(0);
-                    if(params.name !== '') {
-                        return params.name + '\n{white|' + '占比' + percent + '%}';
-                    }else {
-                        return '';
-                    }
-                },
-                rich: rich
-            },
-            labelLine: {
-                length:30,
-                length2:20,
-                show: true,
-                color:'#00ffff'
-            }
-        }
-    },
-    data: data1
-}];
-option2 = {
-    backgroundColor: '#00265f',
-    tooltip: {
-        show: false
-    },
-    legend: {
-        show: false
-    },
-    toolbox: {
-        show: false
-    },
-    series: seriesObj
-}
-
-
-
-
-
-
-
-// import echarts from 'echarts'
-var charts = { // 按顺序排列从大到小
-  cityList: ['1号堆垛机', '2号堆垛机', '3号堆垛机', '4号堆垛机', '5号堆垛机'],
-  cityData: [7500, 6200, 5700, 4200, 3500]
-}
-var top10CityList = charts.cityList
-var top10CityData = charts.cityData
-var color = ['#ff5b00','#ffa800','#ffe000','#006ced','#00cfff','#00ffff']
-
-let lineY = []
-for (var i = 0; i < charts.cityList.length; i++) {
-  var x = i
-  if (x > color.length - 1) {
-    x = color.length - 1
-  }
-  var data = {
-    name: charts.cityList[i],
-    color: color[x] ,
-    value: top10CityData[i],
-    itemStyle: {
-      normal: {
-        show: true,
-        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-          offset: 0,
-          color: color[x] 
-        }, {
-          offset: 1,
-          color: color[x]
-        }], false),
-        barBorderRadius: 10
-      },
-      emphasis: {
-        shadowBlur: 15,
-        shadowColor: 'rgba(0, 0, 0, 0.1)'
-      }
-    }
-  }
-  lineY.push(data)
-}
-option3= {
-    backgroundColor:'#00265f',
-  title: {
-    show: false
-  },
-  tooltip: {
-    trigger: 'item'
-  },
-  grid: {
-    borderWidth: 0,
-    top: '10%',
-    left: '5%',
-    right: '15%',
-    bottom: '3%'
-  },
-  color: color,
-  yAxis: [{
-    type: 'category',
-    inverse: true,
-    axisTick: {
-      show: false
-    },
-    axisLine: {
-      show: false
-    },
-    axisLabel: {
-      show: false,
-      inside: false
-    },
-    data: top10CityList
-  }, {
-    type: 'category',
-    axisLine: {
-      show: false
-    },
-    axisTick: {
-      show: false
-    },
-    axisLabel: {
-      show: true,
-      inside: false,
-      textStyle: {
-        color: '#b3ccf8',
-        fontSize: '14',
-        fontFamily: 'PingFangSC-Regular'
-      },
-      formatter: function (val) {
-        return `${val}k`
-      }
-    },
-    splitArea: {
-      show: false
-    },
-    splitLine: {
-      show: false
-    },
-    data: top10CityData
-  }],
-  xAxis: {
-    type: 'value',
-    axisTick: {
-      show: false
-    },
-    axisLine: {
-      show: false
-    },
-    splitLine: {
-      show: false
-    },
-    axisLabel: {
-      show: false
-    }
-  },
-  series: [{
-    name: '',
-    type: 'bar',
-    zlevel: 2,
-    barWidth: '10px',
-    data: lineY,
-    animationDuration: 1500,
-    label: {
-      normal: {
-        color: '#b3ccf8',
-        show: true,
-        position: [0, '-24px'],
-        textStyle: {
-          fontSize: 16
-        },
-        formatter: function (a, b) {
-          return a.name
-        }
-      }
-    }
-  }],
-  animationEasing: 'cubicOut'
-}
-
-
-//仓库库容
+//-----option1-----仓库库容--------------
  myChart1.showLoading();  
  var value = 0.0;
  var data = [0.0 ];
@@ -462,13 +58,14 @@ option3= {
 
                 myChart1.hideLoading();    //隐藏加载动画
                 myChart1.setOption({
-     backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+                  backgroundColor: '#00265f',
+    /* backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
         offset: 0,
         color: 'rgb(17, 38, 95)'
     }, {
         offset: 1,
         color: 'rgb(17, 38, 95)'
-    }]),
+    }]),*/
      title: {
          text: (value * 100).toFixed(0) + '{a|%}',
          textStyle: {
@@ -530,7 +127,7 @@ option3= {
          outline: {
              borderDistance: 0,
              itemStyle: {
-                 borderWidth: 20,
+                 borderWidth: 3,
                  borderColor: {
                      type: 'linear',
                      x: 0,
@@ -590,9 +187,514 @@ option3= {
 
  
       
-      myChart2.setOption(option2);
-      myChart3.setOption(option3);
-      myChart4.setOption(option1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-----option2--物料类别统计 
+
+
+     $.ajax({
+        type : "get",
+        cache: false,
+        async : true,           
+        url : '/wms4/getMtype.action',    
+        dataType : "json",       
+        success : function(result) {
+        
+        
+          var scaleData = [{
+              'NAME': '无数据',
+              'VALUE': 100
+            }
+            
+        ];
+        scaleData=result.rows;
+        var rich = {
+            white: {
+                color: '#ddd',
+                align: 'center',
+                padding: [0, 0]
+            }
+        };
+        var placeHolderStyle = {
+            normal: {
+                label: {
+                    show: false
+                },
+                labelLine: {
+                    show: false
+                },
+                color: 'rgba(0, 0, 0, 0)',
+                borderColor: 'rgba(0, 0, 0, 0)',
+                borderWidth: 0
+            }
+        };
+        var data1 = [];
+        var color=['#ff5b00','#ffe000','#00ffff','#00cfff','#006ced','#ff3000','#ffa800']
+        for (var i = 0; i < scaleData.length; i++) {
+            data1.push({
+                value: scaleData[i].VALUE,
+                name: scaleData[i].NAME,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 10,
+                        shadowBlur: 10,
+                        borderColor:color[i],
+                        shadowColor: color[i]
+                    }
+                }
+            }, {
+                value: 2,
+                name: '',
+                itemStyle: placeHolderStyle
+            });
+        }
+
+        var seriesObj = [{
+            name: '',
+            type: 'pie',
+            //center:['50%','50%'],
+            clockWise: false,
+            radius: [95, 95],
+            hoverAnimation: false,
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        position: 'outside',
+                        color: '#ddd',
+                        textStyle: {
+                          fontSize: 14
+                        },
+                        formatter: function(params) {
+                            var percent = 0;
+                            var total = 0;
+                            for (var i = 0; i < scaleData.length; i++) {
+                                total += scaleData[i].VALUE;
+                            }
+                            percent = ((params.value / total) * 100).toFixed(0);
+                            if(params.name !== '') {
+                                return params.name +'  '+params.value+ '板\n{white|' + '占比' + percent + '%}';
+                            }else {
+                                return '';
+                            }
+                        },
+                        rich: rich
+                    },
+                    labelLine: {
+                        length:30,
+                        length2:20,
+                        show: true,
+                        color:'#00ffff'
+                    }
+                }
+            },
+            data: data1
+        }];
+            option2 = {
+            backgroundColor: '#00265f',
+            title: {
+                top: '2%',
+                left: 'center',
+                text: '物料类别统计',
+                textStyle: {
+                    align: 'center',
+                    color: '#4DCEF8',
+                    fontSize: 18
+                }
+            },
+            tooltip: {
+                show: false
+            },
+            legend: {
+                show: false
+            },
+            toolbox: {
+                show: false
+            },
+            series: seriesObj
+        }
+        myChart2.setOption(option2);
+         
+        },
+        error : function(errorMsg) {
+         
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$.ajax({
+        type : "get",
+        cache: false,
+        async : true,           
+        url : '/wms4/getSCgroup.action',    
+        dataType : "json",       
+        success : function(result) {
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            
+            var cost = [];
+            var totalCost = [];
+            for (var i = 0; i < result.rows.length; i++) {
+              cost.push(result.rows[i].USABLE);
+              totalCost.push(result.rows[i].TOTAL);
+            }  
+            var grade = ['一区','二区','三区','四区','五区','六区' ]
+            var myColor = ['#21BF57','#56D0E3',  '#1089E7', '#F8B448','#F57474', ];
+            var data = {
+                grade: grade,
+                cost: cost,
+                totalCost: totalCost
+            };
+            option3 = {
+                backgroundColor: '#00265f',
+                title: {
+                    top: '2%',
+                    left: 'center',
+                    text: '库存分区统计',
+                    textStyle: {
+                        align: 'center',
+                        color: '#4DCEF8',
+                        fontSize: 18
+                    }
+                },
+                grid: {
+                    left: '80',
+                    right: '150'
+                },
+                xAxis: {
+                    show: false,
+                },
+                yAxis: {
+                    type: 'category',
+                    axisLabel: {
+                        margin:30,
+                        show: true,
+                        color: '#4DCEF8',
+                        fontSize: 14
+                    },
+                    axisTick: {
+                        show: false,
+                    },
+                    axisLine: {
+                        show: false,
+                    },
+                    data: data.grade
+                },
+                series: [{
+                    type: 'bar',
+                    barGap: '-65%',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'right',
+                            color: '#fff',
+                            fontSize: 14,
+                            formatter: 
+                            function(param) {
+                              console.log(param);
+                                return data.cost[param.dataIndex]+'/'+data.totalCost[param.dataIndex] +' ['+((data.cost[param.dataIndex] / data.totalCost[param.dataIndex]) * 100).toFixed(0)+'%]';
+                            },
+                        }
+                    },
+                    barWidth: '30%',
+                    itemStyle: {
+                        normal: {
+                            borderColor: '#4DCEF8',
+                            borderWidth: 2,
+                            barBorderRadius: 15,
+                            color: 'rgba(102, 102, 102,0)'
+                        },
+                    },
+                    z: 1,
+                    data: data.totalCost,
+                    // data: da
+                }, {
+                    type: 'bar',
+                    barGap: '-85%',
+                    barWidth: '21%',
+                    itemStyle: {
+                         normal: {
+                            barBorderRadius: 16,
+                            color: function(params) {
+                                var num = myColor.length;
+                                return myColor[params.dataIndex % num]
+                            },
+                        }
+                    },
+                    max: 1,
+                 
+                    labelLine: {
+                        show: true,
+                    },
+                    z: 2,
+                    data: data.cost,
+                }]
+            };
+           myChart3.setOption(option3);
+        },
+        error : function(errorMsg) {
+            
+            
+        }
+    })
+
+          //myChart3.setOption(option3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+$.ajax({
+        type : "get",
+        cache: false,
+        async : true,           
+        url : '/wms4/getqushi.action',    
+        dataType : "json",       
+        success : function(result) {
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            console.log(result);
+            var inbound = [];
+            var outbound = [];
+            var total = [];
+            const colorList = ["#9E87FF", '#73DDFF', '#fe9a8b', '#F56948', '#9E87FF'];
+            for (var i = 0; i < result.rows.length; i++) {
+              inbound.push(result.rows[i].INBOUND);
+              outbound.push(result.rows[i].OUTBOUND);
+              total.push(result.rows[i].TOTAL)
+            } 
+            var option1 = {
+               backgroundColor:'#00265f',
+               title: {
+                          top: '2%',
+                          left: 'center',
+                          text: '出入库趋势',
+                          textStyle: {
+                              align: 'center',
+                              color: '#4DCEF8',
+                              fontSize: 18
+                          }
+                      },
+                  tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                      type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                  },
+                  grid: {
+                    left: '2%',
+                    right: '4%',
+                    bottom: '14%',
+                    top:'16%',
+                    containLabel: true
+                  },
+                   legend: {
+                  data: ['1', '2', '3'],
+                  right: 10,
+                  top:12,
+                  textStyle: {
+                      color: "#fff"
+                  },
+                  itemWidth: 12,
+                  itemHeight: 10,
+                  // itemGap: 35
+              },
+                  xAxis: {
+                    type: 'category',
+                    data: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+                    axisLine: {
+                      lineStyle: {
+                        color: 'white'
+
+                      }
+                    },
+                    axisLabel: {
+                      // interval: 0,
+                      // rotate: 40,
+                      textStyle: {
+                        fontFamily: 'Microsoft YaHei'
+                      }
+                    },
+                  },
+
+                  yAxis: {
+                    type: 'value',
+                    //max:'1200',
+                    axisLine: {
+                      show: false,
+                      lineStyle: {
+                        color: 'white'
+                      }
+                    },
+                    splitLine: {
+                      show: true,
+                      lineStyle: {
+                        color: 'rgba(255,255,255,0.3)'
+                      }
+                    },
+                    axisLabel: {}
+                  },
+                 
+                  series: [{
+                    name: '出库',
+                    type: 'bar',
+                    barWidth: '15%',
+                    itemStyle: {
+                      normal: {
+                          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                              offset: 0,
+                              color: '#248ff7'
+                          }, {
+                              offset: 1,
+                              color: '#6851f1'
+                          }]),
+                          barBorderRadius: 12,
+                      },
+                    },
+                    data: outbound,
+                  },
+                  {
+                    name: '入库',
+                    type: 'bar',
+                    barWidth: '15%',
+                    itemStyle: {
+                      normal: {
+                          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                              offset: 0,
+                              color: '#8bd46e'
+                          }, {
+                              offset: 1,
+                              color: '#09bcb7'
+                          }]),
+                          barBorderRadius: 11,
+                      }
+                      
+                    },
+                    data: inbound,
+                  },
+                  {
+                      name: '总任务数',
+                      type: 'line',
+                      data: total,
+                      symbolSize: 1,
+                      symbol: 'circle',
+                      smooth: true,
+                      yAxisIndex: 0,
+                      symbolSize: 5,
+                      lineStyle: {
+                          width: 3,
+                          color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [{
+                                  offset: 0,
+                                  color: '#9effff'
+                              },
+                              {
+                                  offset: 1,
+                                  color: '#9E87FF'
+                              }
+                          ]),
+                         
+                      },
+                      itemStyle: {
+                          normal: {
+                              color: colorList[0],
+                              borderColor: colorList[0]
+                          }
+                      }
+                  }]
+                };
+
+            var app = {
+                currentIndex: -1,
+            };
+            setInterval(function () {
+            var dataLen = option1.series[0].data.length;
+
+            // 取消之前高亮的图形
+            myChart4.dispatchAction({
+              type: 'downplay',
+              seriesIndex: 0,
+              dataIndex: app.currentIndex
+            });
+            app.currentIndex = (app.currentIndex + 1) % dataLen;
+            //console.log(app.currentIndex);
+            // 高亮当前图形
+            myChart4.dispatchAction({
+              type: 'highlight',
+              seriesIndex: 0,
+              dataIndex: app.currentIndex,
+            });
+            // 显示 tooltip
+            myChart4.dispatchAction({
+              type: 'showTip',
+              seriesIndex: 0,
+              dataIndex: app.currentIndex
+            });
+
+
+          }, 3000);
+            myChart4.setOption(option1);
+        },
+        error : function(errorMsg) {
+            
+            
+        }
+    })
+
+
+     
        </script>
    </body>
 </html>

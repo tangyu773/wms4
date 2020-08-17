@@ -22,6 +22,11 @@ public interface SysUserDao {
 	public boolean droptreepanel(String id,String pid) ;
 	public abstract boolean updatepwd(String id,String pwd) ;
 	public abstract Object orderquery(order_param odparam) ;
+	public List<Map<String, Object>> sys_role_query() 
+			throws Exception ;
+	public List<Map<String, Object>> getMtype() throws Exception ;
+	public List<Map<String, Object>> getSCgroup() throws Exception ;
+	public List<Map<String, Object>> getqushi() throws Exception ;
 		
 	
 }

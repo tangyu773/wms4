@@ -58,6 +58,11 @@ public class UserController  extends ControllerSupport{
 		
 		return new Json("修改%s!",sysUserService.droptreepanel(id, pid));
 	}
+	@RequestMapping("/sys_role_query")
+	@ResponseBody
+	public List<Map<String, Object>> sys_role_query() throws Exception {
+		return sysUserService.sys_role_query();
+	}
 	
 	
 }
