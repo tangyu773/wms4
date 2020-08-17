@@ -2,49 +2,19 @@ Ext.define('Admin.view.widgets.Widgets', {
     extend: 'Ext.container.Container',
     xtype: 'widgets',
 
-    requires: [
-        'Admin.view.widgets.WidgetA',
-        'Admin.view.widgets.WidgetB',
-        'Admin.view.widgets.WidgetC',
-        'Admin.view.widgets.WidgetD',
-        'Admin.view.widgets.WidgetE',
-        'Admin.view.widgets.WidgetF',
-        'Admin.model.DataXY',
-        'Admin.model.MultiDataXY',
-        'Admin.model.Subscription',
-       
-        
-        'Ext.slider.Single',
-        'Ext.form.field.Display',
-        'Admin.view.widgets.WidgetController',
-      
-    ],
-
-    viewModel: {
-        type: 'dashboard'
-    },
- 
-    controller: 'Widgets',
-    layout: 'responsivecolumn',
-
     defaults: {
         xtype: 'container'
     },
 
-    items: [
-       
-                {
-                    xtype: 'widget-d',
-                    responsiveCls: 'big-100 small-100'
-                },
-        {
-            xtype: 'dashboardservicespanel',
-            responsiveCls: 'big-100 small-100',
-         
-        },{
-                      xtype: 'dashboardnetworkpanel',
-            responsiveCls: 'big-100 small-100',
-            
-        }
+    items: [      
+                {      
+                    xtype: 'box', //或者xtype: 'component',      
+                   // width: 100, //图片宽度      
+                  //  height: 200, //图片高度      
+                    autoEl: {      
+                        tag: 'img',    //指定为img标签      
+                        src: 'resources/images/img5.jpg'    //指定url路径      
+                    }      
+                }  
     ]
 });

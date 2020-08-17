@@ -90,24 +90,22 @@ public class LoginController extends ControllerSupport {
 		commSession.put(SpExtParams.IDCARD, String.valueOf(user.get("idcard")));
 		setTargetFromSession(Constants.WEB_APP_COMMON_SESSION, commSession);
 		//user.remove("password");
-		 try {
-			  Socket s= new Socket("10.10.30.202",8008);
+		/* try {
+			  Socket s= new Socket("localhost",7522);
 			  
 			  OutputStream os= s.getOutputStream();
 			  OutputStreamWriter osw=new OutputStreamWriter(os);
-			  PrintWriter pw= new PrintWriter(osw,true);					  				      
-			  pw.write("STXL;A2702001075ETX");
+			  PrintWriter pw= new PrintWriter(osw,true);
+			  pw.println("你好");
 			  InputStream is = s.getInputStream();
 			  InputStreamReader isw	= new InputStreamReader (is);
-			  BufferedReader br= new BufferedReader(isw);
-			  System.out.println("socket open");  
-			  String mess= "";
-			  while((mess = br.readLine()) != null)
-			      System.out.println(mess);  
-	
+			 BufferedReader br= new BufferedReader(isw);
+			 
+			 String mess= br.readLine();
+			 System.out.println(mess);
 		  }catch( Exception e ){
-			  System.out.println(e.toString()); 
-		  }
+			 
+		  }*/
 
 		return new Json("登录成功!",true);
 	}

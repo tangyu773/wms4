@@ -15,7 +15,7 @@ Ext.define('Admin.view.dashboard.Network', {
 
     bodyPadding: 15,
 
-    title: '近期订单数量统计',
+    title: '近期订单数量统计11',
     layout: {
         type: 'vbox',
         align: 'stretch'

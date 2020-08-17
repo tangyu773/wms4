@@ -13,7 +13,7 @@ Ext.define('Admin.store.Order', {
             ADDORDER: just.getUrl('/sys/user/order_add_c.action')
         },
         type: 'ajax',
-        url: just.getUrl('/sys/user/order_query_r.action'),
+        url: just.getUrl('/order/orderlist.action'),
         actionMethods: {
             create: "POST", read: "POST", update: "POST", destroy: "POST"
         },

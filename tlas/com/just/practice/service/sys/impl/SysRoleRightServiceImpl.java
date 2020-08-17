@@ -69,7 +69,7 @@ public class SysRoleRightServiceImpl extends BaseObject implements
 		for(Map<String, Object> m: mt) {
 			int p = ((BigDecimal)m.get("id")).intValue();
 			if(isNotLeaf(p)) {
-				m.put("expanded", true);
+				m.put("expanded", false);
 				m.put("leaf", false);
 				List<Map<String,Object>> children = getTree(p);
 				m.put("children", children);

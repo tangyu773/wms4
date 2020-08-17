@@ -39,22 +39,7 @@ Ext.define('Admin.view.widgets.WidgetD', {
                         xtype: 'displayfield',
                         flex: 1,
                         labelAlign: 'top'
-                    },
-                    items: [
-                        {   
-                            name:'widget_d_1',
-                            value: '订单总数<br>0（单）'
-                        },
-                        {
-                            name:'widget_d_2',
-                            cls: 'widget-follower-tool-label',
-                            value: '成功订单总数<br>0（单）'
-                        },
-                        {
-                            name:'widget_d_3',
-                             value: '成功订票总张数<br>0（张）'
-                        }
-                    ]
+                    }
                 }
             ]
         }

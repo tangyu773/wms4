@@ -32,7 +32,7 @@ Ext.define('Admin.view.order.OrderAdd', {
         },
 
 
-    width : 1500,//窗体宽度
+    width : 700,//窗体宽度
 
     items: [
 
