@@ -39,14 +39,15 @@ public class OrderController  extends ControllerSupport{
 	 */
 	@RequestMapping("/orderlist")
 	@ResponseBody
-	public Json loadLoginInfo() throws Exception {
+	public Json orderlist() throws Exception {
 		List<Map<String, Object>> req = orderService.getorderlist();
 		return new Json("获取出库单成功", true, req);
 	}
-	@RequestMapping("/showUsrTree")
+	@RequestMapping("/revlist")
 	@ResponseBody
-	public List<Map<String, Object>> showDept() throws Exception {
-		return orderService.findusrForTree();
+	public Json revlist() throws Exception {
+		List<Map<String, Object>> req = orderService.revlist();
+		return new Json("获取入库单成功", true, req);
 	}
 	@RequestMapping("/droptreepanel")
 	@ResponseBody

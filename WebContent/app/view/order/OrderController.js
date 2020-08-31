@@ -6,14 +6,14 @@ Ext.define('Admin.view.order.OrderController', {
     _searchGrid: undefined,
     init: function() {
         this.control({
-        	'order_order':{
-    			afterrender: this._onLoadBaseData
+        	'order_order gridpanel[name=order_order_list]':{
+    			rowdblclick: this._rowdblclickFn
         	},
 	        'system_user_UserSearch button[action=search]': {
 	            click: this._onRefresh
 	        },
-        	'system_user_UserList':{
-	            //afterrender: this._loadData
+        	'order_order':{
+	            afterrender: this._onLoadBaseData
         	},
 		    'system_user_UserList actioncolumn': {  
 		    	onShowEditWin: this._onShowEditWin,
@@ -31,6 +31,12 @@ Ext.define('Admin.view.order.OrderController', {
 	_initViews : function(cmp, eOpts){
 		
 	},
+    _rowdblclickFn : function(s,record,item,index,e,eOpts){
+    
+        var win = Ext.widget('orderadd');
+        win.down('form').loadRecord(record);
+        //win.down('textfield[name=account]').setValue(record.data.account);
+    },
 
 	/**
      * 初始化搜索参数

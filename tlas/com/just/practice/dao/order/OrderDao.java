@@ -29,6 +29,7 @@ public interface OrderDao {
 	public List<Map<String, Object>> getSCgroup() throws Exception ;
 	public List<Map<String, Object>> getqushi() throws Exception ;
 	public List<Map<String, Object>> getorderlist() throws Exception;
+	public List<Map<String, Object>> revlist() throws Exception;
 		
 	
 }

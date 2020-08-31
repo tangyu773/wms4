@@ -1,12 +1,12 @@
-Ext.define('Admin.view.order.OrderController', {
+Ext.define('Admin.view.order.RevController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.order_order',
+    alias: 'controller.order_rev',
     _container: undefined,
     _listGrid: undefined,
     _searchGrid: undefined,
     init: function() {
         this.control({
-        	'order_order':{
+        	'order_Rev':{
     			afterrender: this._onLoadBaseData
         	},
 	        'system_user_UserSearch button[action=search]': {
@@ -31,6 +31,7 @@ Ext.define('Admin.view.order.OrderController', {
 	_initViews : function(cmp, eOpts){
 		
 	},
+
 
 	/**
      * 初始化搜索参数
@@ -86,7 +87,7 @@ Ext.define('Admin.view.order.OrderController', {
 	 * 加载界面基础数据数据
 	 */
 	_onLoadBaseData : function(cmp, eOpts){
-        var ulists =Ext.ComponentQuery.query("container[name='container_order_main']");
+        var ulists =Ext.ComponentQuery.query("container[name='container_order_Rev']");
        var ulist = ulists[ulists.length-1];
         // var ulist = Ext.getCmp('system_user_UserList');
       //  console.log(win);
@@ -100,6 +101,7 @@ Ext.define('Admin.view.order.OrderController', {
         params.usertype1 = '';
         roleStore.proxy.extraParams = {params: Ext.encode(params)};*/
         var params = this._initSearchParams();
+        roleStore.proxy.url = roleStore.proxy.api.REV;
         roleStore.proxy.extraParams = {params: Ext.encode(params)};
         roleStore.load();
 	},

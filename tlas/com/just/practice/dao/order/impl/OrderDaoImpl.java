@@ -106,7 +106,12 @@ public class OrderDaoImpl extends AbstractDao implements OrderDao {
 	}
 	@Override
 	public List<Map<String, Object>> getorderlist() throws Exception {
-		String sql = "select * from orderhead";
+		String sql = "select oh.* ,t.description,s.description as des from orderhead oh left join type t on oh.typecode=t.code left join  state s on oh.statecode=s.code order by oh.createtime desc";
+		return getJdbcTemplate().queryForList(sql);
+	}
+	@Override
+	public List<Map<String, Object>> revlist() throws Exception {
+		String sql = "select rh.*,t.description,s.description as des from receivinghead rh left join type t on rh.RECEIVINGHEADMODE=t.code left join state s on s.code=rh.statecode order by rh.createtime desc";
 		return getJdbcTemplate().queryForList(sql);
 	}
 	

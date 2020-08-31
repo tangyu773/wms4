@@ -1,15 +1,15 @@
-Ext.define('Admin.view.order.Order', {
+Ext.define('Admin.view.order.Rev', {
 	extend : 'Ext.panel.Panel',
-	xtype : 'order_order',
-	title : '出库管理',
-	name:'container_order_main',
+	xtype : 'order_Rev',
+	title : '入库单管理',
+	name:'container_order_Rev',
 	requires: [
 	'Admin.view.order.OrderViewModel',
-	'Admin.view.order.OrderController',
+	'Admin.view.order.RevController',
 	'Admin.view.order.OrderAdd'
 	],
 	cls: 'shadow-panel',
-	controller : 'order_order',
+	controller : 'order_rev',
 	viewModel : {
 		type : 'order_order'
 	},
@@ -27,7 +27,7 @@ Ext.define('Admin.view.order.Order', {
 		 //id:'system_user_UserList',
 		 name:'order_order_list',
 		 selModel: Ext.create('Ext.selection.CheckboxModel'),
-		 height:Math.floor(Ext.Element.getViewportHeight()-80),
+		 height:Math.floor(Ext.Element.getViewportHeight()-120),
 		 bind : {
 		 	store : '{order}'
 		 },
@@ -52,7 +52,7 @@ Ext.define('Admin.view.order.Order', {
 			align: "left",
 			width : 50,
 		},{
-			dataIndex : 'ORDERNUMBER',
+			dataIndex : 'RECEIVINGNUMBER',
 			text : '订单号',
 		//locked   : true,
 		align: "center",
@@ -112,14 +112,14 @@ Ext.define('Admin.view.order.Order', {
 			dataIndex : 'DES',	
 			text : '状态',
 			align: "center",
-			width : 150,
+			width : 190,
 
 
 		},{
 			dataIndex : 'DESCRIPTION',
 			text : '获取接口',
 			align: "center",
-			width : 120,
+			width : 150,
 		// renderer:function(v,m,r) {                                                                                                    
                       //return v.substring(0,10);
                   //  }

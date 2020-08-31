@@ -17,11 +17,11 @@
 		</property>
 		<property name="jdbcUrl">
 			<!-- <value>jdbc:oracle:thin:@211.147.253.66:1521:orcl</value> -->
-			<value>jdbc:oracle:thin:@localhost:1521:orcl</value>
+			<value>jdbc:oracle:thin:@10.10.30.10:1521:orcl</value>
 		</property>
 		<property name="user">
 		<!-- 	<value>dzsw</value> -->
-		 	<value>system</value> 
+		 	<value>WMS</value> 
 		</property>
 		<property name="password">
 			<!-- <value>dzsw</value>

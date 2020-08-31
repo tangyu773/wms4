@@ -114,5 +114,10 @@ public class OrderServiceImpl extends BaseObject implements OrderService {
 	public List<Map<String, Object>> getorderlist() throws Exception {
 		return orderDao.getorderlist();
 	}
+	@Override
+	public List<Map<String, Object>> revlist() throws Exception {
+		// TODO Auto-generated method stub
+		return orderDao.revlist();
+	}
 
 }

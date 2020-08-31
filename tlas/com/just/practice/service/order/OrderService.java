@@ -28,5 +28,6 @@ public interface OrderService {
 	public List<Map<String, Object>> getqushi() 
 			throws Exception ;
 	public List<Map<String, Object>> getorderlist() throws Exception;
+	public List<Map<String, Object>> revlist() throws Exception;
 }
 

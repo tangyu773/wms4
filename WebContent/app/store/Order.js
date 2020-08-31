@@ -8,7 +8,7 @@ Ext.define('Admin.store.Order', {
     
     proxy: {
         api: {
-            STATION: just.getUrl('/sys/user/station_query_r.action'),
+            REV: just.getUrl('/order/revlist.action'),
             CONTACT: just.getUrl('/sys/user/generalcontact_query_r.action'),
             ADDORDER: just.getUrl('/sys/user/order_add_c.action')
         },
