@@ -3,21 +3,23 @@
  * 
  */
 package com.just.practice.controller.order;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.just.common.web.controller.ControllerSupport;
-import com.just.practice.constants.SessionCode;
 import com.just.practice.po.Json;
 import com.just.practice.service.order.OrderService;
-import com.just.practice.service.sys.SysUserService;
+
 
 
 /**
@@ -49,17 +51,14 @@ public class OrderController  extends ControllerSupport{
 		List<Map<String, Object>> req = orderService.revlist();
 		return new Json("获取入库单成功", true, req);
 	}
-	@RequestMapping("/droptreepanel")
+	@RequestMapping("/detailist")
 	@ResponseBody
-	public Json droptreepanel(String id,String pid) throws Exception {
+	public Json detailist(@RequestParam(required=false)String order_id) throws Exception {
 		
-		return new Json("修改%s!",orderService.droptreepanel(id, pid));
+		List<Map<String, Object>> req = orderService.getdetailist(order_id);
+		return new Json("获取出库详情成功", true, req);
 	}
-	@RequestMapping("/sys_role_query")
-	@ResponseBody
-	public List<Map<String, Object>> sys_role_query() throws Exception {
-		return orderService.sys_role_query();
-	}
+	
 	
 	
 }

@@ -4,11 +4,12 @@ Ext.define('Admin.store.Order', {
 
 /*    model: 'Admin.model.system.user.User',*/
 
-    pageSize: 1000,
+    pageSize: 10000,
     
     proxy: {
         api: {
             REV: just.getUrl('/order/revlist.action'),
+            DETAILIST: just.getUrl('/order/detailist.action'),
             CONTACT: just.getUrl('/sys/user/generalcontact_query_r.action'),
             ADDORDER: just.getUrl('/sys/user/order_add_c.action')
         },

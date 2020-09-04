@@ -5,13 +5,13 @@
 Ext.define('Admin.view.order.OrderAdd',{
     extend: 'Ext.window.Window',
     alias: 'widget.orderadd',
-    autoShow : true,//自动打开
+    autoShow : false,//自动打开
     modal : true,//模态窗口
-    width : 900,//窗体宽度
+    width : 1200,//窗体宽度
     height : 600,//窗体高度
     resizable: false,
     iconCls: 'editIcon',
-    title: '修改用户',
+    title: '出库详情',
     constrain : true,//是否限制窗口超出浏览器
     plain : true,   //是否设置窗口透明背景
     bodyPadding : '1 1 1 1',//表单边框 上内边距、右内边距、下内边距、左内边距
@@ -60,41 +60,49 @@ Ext.define('Admin.view.order.OrderAdd',{
         xtype: 'gridpanel',
         border:true,
         reference: 'ordergrid',
-         name:'order_order_list',
+        name:'order_detail_list',
          //selModel: Ext.create('Ext.selection.CheckboxModel'),
          height:'fit',//Math.floor(Ext.Element.getViewportHeight()-80),
          bind : {
-            store : '{order}'
+            store : '{detail}'
          },
          viewConfig : {
-
+            emptyText:'<div style="text-align:center;padding:8px;font-size:16px;">查询无数据</div>',
             stripeRows: true,
             enableTextSelection:true  ,
          },
          defaults: {
             align: "center",
-            width : 150,
+            width : 80,
          },
         columnLines:true,
         columns : [ {
+            xtype: 'rownumberer',
+            text : '序号',
+            align: "left",
+            width : 50,
+        },{
             dataIndex: 'LINENUM',
             text : '行号',
             width : 50,
         },{
-            dataIndex : 'TARGETITEMID',
+            dataIndex : 'CODE',
             text : '物料代码',
         },{
-            dataIndex : 'DES',  
+            dataIndex : 'NAME',  
             text : '物料名称',
+            width : 350,
         },{
             dataIndex : 'TARGETBATCHNUM',  
             text : '批次',
         },{
             dataIndex : 'QTY',  
             text : '数量',
+            width : 50,
         },{
-            dataIndex : 'DES',  
+            dataIndex : 'UNITID',  
             text : '单位',
+            width : 50,
         },{
             dataIndex : 'FACTORY',  
             text : '出库工厂',
@@ -128,3 +136,8 @@ Ext.define('Admin.view.order.OrderAdd',{
         }
     }]
 });
+
+
+/*
+
+*/

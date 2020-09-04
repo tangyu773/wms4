@@ -3,9 +3,9 @@ OrderEdit.js
  *  系统用户修改界面
  * Created by xiaozou on 15-10-20.
  */
-Ext.define('Admin.view.order.OrderAdd',{
+Ext.define('Admin.view.order.OrderAddedit',{
     extend: 'Ext.window.Window',
-    alias: 'widget.orderadd',
+    alias: 'widget.orderaddedit',
     autoShow : true,//自动打开
     modal : true,//模态窗口
     width : 900,//窗体宽度

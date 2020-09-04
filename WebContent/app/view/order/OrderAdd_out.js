@@ -2,9 +2,9 @@
  * 系统用户添加界面
  * Created by xiaozou on 16-01-04.
  */
-Ext.define('Admin.view.order.OrderAdd', {
+Ext.define('Admin.view.order.OrderAddout', {
     extend: 'Ext.form.Panel',
-    alias: 'widget.orderadd',
+    alias: 'widget.orderaddout',
     name:'orderadd',
     requires: [
 

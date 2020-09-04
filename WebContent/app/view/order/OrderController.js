@@ -32,10 +32,18 @@ Ext.define('Admin.view.order.OrderController', {
 		
 	},
     _rowdblclickFn : function(s,record,item,index,e,eOpts){
-    
+        
         var win = Ext.widget('orderadd');
         win.down('form').loadRecord(record);
-        //win.down('textfield[name=account]').setValue(record.data.account);
+        //detailstore = win.down('gridpanel').getStore();
+        var listViewModel =  win.getViewModel();
+        data = listViewModel.getData();
+        listStore = data.detail;
+        listStore.proxy.url = listStore.proxy.api.DETAILIST;
+        listStore.proxy.extraParams = {order_id: record.data.ORDERID};
+        listStore.load();
+        win.show();
+
     },
 
 	/**
@@ -109,34 +117,7 @@ Ext.define('Admin.view.order.OrderController', {
         roleStore.proxy.extraParams = {params: Ext.encode(params)};
         roleStore.load();
 	},
-    /**
-     * 重置密码
-     */
-    _onResetPassword:function(grid, rowIndex, colIndex,b,h,v){
-        var me = this;
-        var params = {};
-        params.id = v.data.staff_id;
-        if(Ext.MessageBox.confirm("系统提示","是否重置密码？",function(e){
-            if(e == 'yes'){
-                just.showWaitingDlg("正在重置,请稍候...");
-                Ext.Ajax.request({
-                    url: me._listGrid.getStore().getProxy().api.REPWD,
-                    params : {
-                   	   params: Ext.encode(params)
-                     },
-                    success : function(response, options){
-                        var json = Ext.JSON.decode(response.responseText);
-                        just.hideWaitingDlg(json.info,false);
-                        if (json.status == '200') {
-                            me._loadData(me._listGrid.store.currentPage);
-                            Ext.example.msg('系统提示!', json.info);
-                        	
-                        }
-                   }
-                });
-            }
-        }));
-    },
+
     onuseraddClick:function(){
         var me =this;
         var width = Math.floor(Ext.Element.getViewportWidth() * 0.45),
@@ -370,7 +351,7 @@ Ext.define('Admin.view.order.OrderController', {
         var util = Ext.create(just.createUtil('Permission'));
                 util.initPermission(cmp,ordergrid);
                 
-             },
+    },
 
 });
 

@@ -12,6 +12,9 @@ Ext.define('Admin.view.order.OrderViewModel', {
         },
         contact:{
             type:'order_order'
+        },
+        detail:{
+            type:'order_order'
         }
     },
 });
